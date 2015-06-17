@@ -1,0 +1,34 @@
+<div class="row" ng-controller="ProductsController">
+    <div class="col-sm-12">
+    	<div class="row">
+		    <div class="col-sm-12">
+		    	<label>Per Page</label>
+			    <select ng-model="perPage" ng-change="makeProducts()">
+			    	<option ng-repeat="rec in records" value="{{rec}}">{{rec}}</option>
+			    </select>
+			</div> 
+		</div>
+
+    	<div class="row">
+		    <div class="col-sm-4" data-ng-repeat="product in products">
+			    <span>
+			    <%= link_to "{{product.title}}",'#','ng-href' => "#{products_path()}/{{product.slug}}" %>
+				</span>
+			    <span class="pull-right">{{product.price}}</span>
+				<%=link_to image_tag("", "ng-src" => "{{product.main_image}}", class:"img-responsive"), "#", 'ng-href' => "#{products_path()}/{{product.slug}}" %>
+			</div> 
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="pagination">
+					<li><a ng-click='previousPage()'>Previous</a></li>
+				  	<li ng-repeat="page in range(totalPages) track by $index">
+				  		<a ng-click="thisPage($index+1)">{{$index + 1}}</a>
+				  	</li>
+				  	<li><a ng-click='nextPage()'>Next</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
