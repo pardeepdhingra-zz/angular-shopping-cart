@@ -7,6 +7,6 @@ class Product < ActiveRecord::Base
 	#has_many :tags
 
 	def main_image
-		"http://localhost:3000/assets/" + self.slug + ".jpg"
+		"http://localhost:3000/assets/400x300.png"
 	end
 end

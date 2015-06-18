@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%=link_to 'Shopping Cart', root_path, class: "navbar-brand" %>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <%if  admin_signed_in?%>
+            <%if can? :read, Product %>
+              <li><%=link_to t('products'), admin_products_path %></li>
+            <%end%>
+    			<li><%=link_to t('sign_out'), destroy_user_session_path, method: :delete %></li>
+    		<%else%>
+    			<li><%= link_to t('log_in'), new_admin_session_path %></li>
+    		<%end%>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>

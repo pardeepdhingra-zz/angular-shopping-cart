@@ -1,6 +1,27 @@
+<%if can? :create, Product%>
+	<div class="row">
+		<div class="col-sm-12">
+			<%=link_to t('new_product'), new_admin_product_path, class: 'btn btn-default pull-right' %>
+		</div>
+	</div>
+<%end%>
 <div class="row">
-  <div class="col-sm-12">
-    <%=render @products %>
-  </div>
+  	<div class="col-sm-12">
+		<table class="table table-responsive">
+			<thead>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Images</th>
+				<th>Action</th>
+			</thead>
+			<tbody>
+			    <%=render @products %>
+			</tbody>
+		</table>
+	</div>
 </div>
-<%= will_paginate @products %>
+<div class="row">
+  	<div class="col-sm-12">
+		<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+	</div>
+</div>

@@ -1,11 +1,20 @@
 <div class="row" ng-controller="ProductsController">
     <div class="col-sm-12">
     	<div class="row">
-		    <div class="col-sm-12">
-		    	<label>Per Page</label>
-			    <select ng-model="perPage" ng-change="makeProducts()">
-			    	<option ng-repeat="rec in records" value="{{rec}}">{{rec}}</option>
-			    </select>
+	    	<div class="col-sm-12">
+		   		<ul class="pagination">
+					<li><a ng-click='previousPage()'>Previous</a></li>
+				  	<li ng-repeat="page in range(totalPages) track by $index">
+				  		<a ng-click="thisPage($index+1)">{{$index + 1}}</a>
+				  	</li>
+				  	<li><a ng-click='nextPage()'>Next</a></li>
+					<li>
+					<label> Per Page</label>
+					<select ng-model="perPage" ng-change="changePerPage()">
+			    		<option ng-repeat="rec in records" value="{{rec}}">{{rec}}</option>
+				    </select>
+				    </li>
+				</ul> 	
 			</div> 
 		</div>
 
@@ -21,14 +30,20 @@
 		
 		<div class="row">
 			<div class="col-sm-12">
-				<ul class="pagination">
+		   		<ul class="pagination">
 					<li><a ng-click='previousPage()'>Previous</a></li>
 				  	<li ng-repeat="page in range(totalPages) track by $index">
 				  		<a ng-click="thisPage($index+1)">{{$index + 1}}</a>
 				  	</li>
 				  	<li><a ng-click='nextPage()'>Next</a></li>
-				</ul>
-			</div>
+					<li>
+					<label> Per Page</label>
+					<select ng-model="perPage" ng-change="changePerPage()">
+			    		<option ng-repeat="rec in records" value="{{rec}}">{{rec}}</option>
+				    </select>
+				    </li>
+				</ul> 	
+			</div> 
 		</div>
 	</div>
 </div>

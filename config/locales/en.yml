@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  new: "New"
+  edit: "Edit"
+  delete: "Delete"
+  delete_confirmation: "Are you sure?"

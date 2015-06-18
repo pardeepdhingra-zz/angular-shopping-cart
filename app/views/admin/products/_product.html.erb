@@ -1,5 +1,13 @@
-<div class="col-sm-4">
-  <span class="product-title"><%= link_to product.title, product %></span>
-  <span class="product-price pull-right"><%= product.price %></span>
-  <%= link_to image_tag("400x300.png", class: "img-responsive"), product %>
-</div>
+<tr>
+	<td><%= link_to product.title, admin_product_path(product) %></td>
+	<td><%= product.price %></td>
+	<td><%= link_to image_tag("100x100.png", class: "img-responsive"), admin_product_path(product) %></td>
+	<td>
+		<%if can? :edit, product %>
+			<%= link_to fa_icon('pencil-square-o ', text: t('edit')), edit_admin_product_path(product) %>
+		<% end %>
+		<%if can? :delete, product %>
+			<%= link_to fa_icon('trash', text: t('delete')), admin_product_path(product), method: :delete, data: { confirm:  t('delete_confirmation') } %>
+		<% end %>
+	</td>
+</tr>
